@@ -1,0 +1,65 @@
+package library.model;
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class Branch {
+
+    private int id;
+    private String name;
+    private String logo; //url logo w przypadku UI będzie zaciągany dynamicznie
+    private List<Book> books = new ArrayList<>();//struktura kolekcyjna związaną z granymi filmami, uproszczone
+//relacja wiele do wiele
+    public Branch(int id, String name, String logo) {//konsturktor
+        this.id = id;
+        this.name = name;
+        this.logo = logo;
+    }
+
+    public Branch() {//bezparametrowy
+    }
+//settery, gettery i to String - później będziemy korzystać z wynalazku Lombok
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getLogo() {
+        return logo;
+    }
+
+    public void setLogo(String logo) {
+        this.logo = logo;
+    }
+
+    public List<Book> getBooks() {
+        return books;
+    }
+
+    public void setBooks(List<Book> books) {
+        this.books = books;
+    }
+
+    public void addBook(Book b) {
+        this.books.add(b);
+    }
+
+    @Override
+    public String toString() {
+        return "Branch{" +
+                "name='" + name + '\'' +
+                ", logo='" + logo + '\'' +
+                '}';
+    }
+}
