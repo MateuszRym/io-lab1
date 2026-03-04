@@ -2,13 +2,18 @@ package library.service.impl;
 
 import library.model.Branch;
 import library.model.Book;
+import library.repository.AuthorDao;
 import library.repository.BranchDao;
 import library.repository.BookDao;
 import library.service.BranchService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Scope;
+import org.springframework.stereotype.Component;
 
 import java.util.List;
 import java.util.logging.Logger;
-
+@Component
+@Scope("prototype")
 public class BranchServiceBean implements BranchService {
 
     private static final Logger log = Logger.getLogger(BranchService.class.getName());
@@ -21,7 +26,14 @@ public class BranchServiceBean implements BranchService {
         this.branchDao = branchDao;
         this.bookDao = bookDao;
     }
-
+    @Autowired
+    public void setBranchDao(BranchDao branchDao) {
+        this.branchDao = branchDao;
+    }
+    @Autowired
+    public void setBookDao(BookDao bookDao) {
+        this.bookDao = bookDao;
+    }
     @Override
     public Branch getBranchById(int id) {
         log.info("searching cinema by id " + id);

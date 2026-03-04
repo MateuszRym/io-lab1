@@ -3,11 +3,14 @@ package library.repository.mem;
 import library.model.Branch;
 import library.model.Book;
 import library.repository.BranchDao;
+import org.springframework.context.annotation.Primary;
+import org.springframework.stereotype.Component;
 
 import java.util.List;
 import java.util.stream.Collectors;
-
-
+@Component("branchDao")
+//@Component
+//@Primary
 public class MemBranchDao implements BranchDao {
 
     @Override

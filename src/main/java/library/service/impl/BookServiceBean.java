@@ -7,10 +7,11 @@ import library.repository.BranchDao;
 import library.repository.AuthorDao;
 import library.repository.BookDao;
 import library.service.BookService;
+import org.springframework.stereotype.Component;
 
 import java.util.List;
 import java.util.logging.Logger;
-
+@Component
 public class BookServiceBean implements BookService {
 
     private static final Logger log = Logger.getLogger(BookService.class.getName());
