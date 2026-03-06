@@ -1,5 +1,7 @@
 package library.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -42,7 +44,7 @@ public class Branch {
     public void setLogo(String logo) {
         this.logo = logo;
     }
-
+    @JsonIgnore
     public List<Book> getBooks() {
         return books;
     }
