@@ -15,8 +15,9 @@ GET http://localhost:8080/webapi/books/1/branches
 Accept: application/json
 
 ### create new cinema
-POST http://localhost:8080/webapi/cinemas
+POST http://localhost:8080/webapi/branches
 Content-Type: application/json
+Accept-Language: pl
 
 {
     "name": "akademicka",

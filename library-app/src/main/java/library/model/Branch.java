@@ -1,6 +1,8 @@
 package library.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Size;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -8,8 +10,11 @@ import java.util.List;
 public class Branch {
 
     private int id;
+    @NotNull
+    @Size(min = 2, max = 20)
     private String name;
     private String logo; //url logo w przypadku UI będzie zaciągany dynamicznie
+    @JsonIgnore
     private List<Book> books = new ArrayList<>();//struktura kolekcyjna związaną z granymi filmami, uproszczone
 //relacja wiele do wiele
     public Branch(int id, String name, String logo) {//konsturktor
