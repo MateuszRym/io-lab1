@@ -7,7 +7,7 @@ import java.util.List;
 
 public interface BranchService {
 //api zwraca nam wszystkie kina
-Branch getBranchById(int id);
+    Branch getBranchById(int id);
 
     List<Branch> getAllBranches();
 

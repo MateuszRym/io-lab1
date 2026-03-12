@@ -7,16 +7,16 @@ public class Book {
 
     private int id;
     private String title;
-    private String bookcover;//url
+    private String cover;//url
     private Author author;//relacja do rezysera - kolejny obiekt danych w uproszczeniu założenie że jeden film ma 1 reżysera
     private float rating;//rating
     private List<Branch> branches = new ArrayList<>();
 //relacja wiele do wiele - bidirectional
 
-    public Book(int id, String title, String bookcover, Author author, float rating) {
+    public Book(int id, String title, String cover, Author author, float rating) {
         this.id = id;
         this.title = title;
-        this.bookcover = bookcover;
+        this.cover = cover;
         this.author = author;
         this.rating = rating;
     }
@@ -41,11 +41,11 @@ public class Book {
     }
 
     public String getCover() {
-        return bookcover;
+        return cover;
     }
 
     public void setCover(String bookcover) {
-        this.bookcover = bookcover;
+        this.cover = bookcover;
     }
 
     public Author getAuthor() {
