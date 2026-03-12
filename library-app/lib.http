@@ -1,0 +1,24 @@
+### get all branches
+GET http://localhost:8080/webapi/branches
+
+### get all branches with param
+GET http://localhost:8080/webapi/branches?phrase=abc
+custom-header: custom-value
+Cookie: some-cookie=some-value
+
+### get branch 1
+GET http://localhost:8080/webapi/branches/1
+Accept: application/xml
+
+### get branches with book
+GET http://localhost:8080/webapi/books/1/branches
+Accept: application/json
+
+### create new cinema
+POST http://localhost:8080/webapi/cinemas
+Content-Type: application/json
+
+{
+    "name": "akademicka",
+    "logo": "logo.png"
+}

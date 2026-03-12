@@ -3,9 +3,10 @@ package library.repository.mem;
 import library.model.Author;
 import library.repository.AuthorDao;
 import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Repository;
 
 import java.util.List;
-@Component
+@Repository("authorDao")
 public class MemAuthorDao implements AuthorDao {
     @Override
     public List<Author> findAll() {

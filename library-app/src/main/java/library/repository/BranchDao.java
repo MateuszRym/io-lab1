@@ -11,6 +11,8 @@ public interface BranchDao {
 
     Branch findById(int id);
 
-    List<Branch> findByBook(Book m);
+    List<Branch> findByBook(Book b);
+
+    Branch save(Branch b);
 
 }

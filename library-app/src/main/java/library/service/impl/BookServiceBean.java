@@ -8,10 +8,11 @@ import library.repository.AuthorDao;
 import library.repository.BookDao;
 import library.service.BookService;
 import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.logging.Logger;
-@Component
+@Service
 public class BookServiceBean implements BookService {
 
     private static final Logger log = Logger.getLogger(BookService.class.getName());

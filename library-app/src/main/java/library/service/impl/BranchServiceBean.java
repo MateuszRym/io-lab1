@@ -9,10 +9,11 @@ import library.service.BranchService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.logging.Logger;
-@Component
+@Service
 @Scope("prototype")
 public class BranchServiceBean implements BranchService {
 
@@ -22,7 +23,7 @@ public class BranchServiceBean implements BranchService {
     private BookDao bookDao;
 
     public BranchServiceBean(BranchDao branchDao, BookDao bookDao) {
-        log.info("creating cinema service bean");
+        log.info("creating branch service bean");
         this.branchDao = branchDao;
         this.bookDao = bookDao;
     }
@@ -36,26 +37,31 @@ public class BranchServiceBean implements BranchService {
     }
     @Override
     public Branch getBranchById(int id) {
-        log.info("searching cinema by id " + id);
+        log.info("searching branch by id " + id);
         return branchDao.findById(id);
     }
 
     @Override
     public List<Book> getBooksInBranch(Branch b) {
-        log.info("searching movies played in cinema " + b.getId());
+        log.info("searching books in branch " + b.getId());
         return bookDao.findByBranch(b);
     }
 
     @Override
     public List<Branch> getAllBranches() {
-        log.info("searching all cinemas");
+        log.info("searching all branches");
         return branchDao.findAll();
     }
 
     @Override
     public List<Branch> getBranchesByBook(Book b) {
-        log.info("searching cinemas by movie " + b.getId());
+        log.info("searching branches by book " + b.getId());
         return branchDao.findByBook(b);
     }
 
+    @Override
+    public Branch addBranch(Branch b) {
+        log.info("adding branch " + b);
+        return branchDao.save(b);
+    }
 }

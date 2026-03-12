@@ -15,4 +15,5 @@ Branch getBranchById(int id);
 
     List<Book> getBooksInBranch(Branch b);
 
+    Branch addBranch(Branch b);
 }
