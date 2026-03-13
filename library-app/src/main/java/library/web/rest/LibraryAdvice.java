@@ -10,6 +10,6 @@ import org.springframework.web.bind.annotation.InitBinder;
 public class LibraryAdvice {
     private final BranchValidator validator;
 
-    @InitBinder
+    @InitBinder("branch")
     void initBinder(WebDataBinder binder) {binder.addValidators(validator);}
 }
