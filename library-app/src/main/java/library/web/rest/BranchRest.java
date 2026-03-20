@@ -39,6 +39,11 @@ public class BranchRest {
         log.info("phrase: {}", phrase);
         log.info("custom-header: {}", customHeader);
         log.info("cookie-name: {}", cookieValue);
+
+        if(phrase != null && phrase.equals("foo")) {
+            throw new IllegalArgumentException("foo");
+        }
+
         List<Branch> branches = branchService.getAllBranches();
         log.info("Found {} branches", branches.size());
         return branches;

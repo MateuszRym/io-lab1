@@ -2,7 +2,7 @@
 GET http://localhost:8080/webapi/branches
 
 ### get all branches with param
-GET http://localhost:8080/webapi/branches?phrase=abc
+GET http://localhost:8080/webapi/branches?phrase=fo
 custom-header: custom-value
 Cookie: some-cookie=some-value
 

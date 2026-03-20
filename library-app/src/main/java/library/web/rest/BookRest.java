@@ -11,6 +11,8 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.context.MessageSource;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.validation.Errors;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.LocaleResolver;
@@ -62,8 +64,11 @@ public class BookRest {
     }
 
     @PostMapping("/books")
-    ResponseEntity<?> addBook(@RequestBody BookDTO bookDTO){
+    ResponseEntity<?> addBook(@Validated @RequestBody BookDTO bookDTO, Errors errors){
         log.info("adding book {}", bookDTO);
+        if(errors.hasErrors()) {
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
+        }
         Book book = new Book();
         book.setTitle(bookDTO.getTitle());
         book.setCover(bookDTO.getCover());
