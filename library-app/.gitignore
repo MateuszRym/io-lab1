@@ -37,3 +37,12 @@ build/
 
 ### Mac OS ###
 .DS_Store
+
+### Docker ###
+docker-compose.override.yml
+.env
+.env.local
+*.env
+volumes/
+data/
+logs/
