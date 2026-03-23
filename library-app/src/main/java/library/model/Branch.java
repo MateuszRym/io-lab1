@@ -8,6 +8,7 @@ import org.springframework.boot.autoconfigure.domain.EntityScan;
 
 import java.util.ArrayList;
 import java.util.List;
+
 @Entity
 @Table(name = "branch")
 public class Branch {
@@ -17,10 +18,13 @@ public class Branch {
     @NotNull
     @Size(min = 2, max = 20)
     private String name;
+    @Column(name = "logo")
     private String logo; //url logo w przypadku UI będzie zaciągany dynamicznie
+    @ManyToMany
     @JsonIgnore
     private List<Book> books = new ArrayList<>();//struktura kolekcyjna związaną z granymi filmami, uproszczone
 //relacja wiele do wiele
+
     public Branch(int id, String name, String logo) {//konsturktor
         this.id = id;
         this.name = name;

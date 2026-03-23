@@ -1,15 +1,26 @@
 package library.model;
 
+import jakarta.persistence.*;
+
 import java.util.ArrayList;
 import java.util.List;
-
+@Entity
 public class Book {
-
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     private String title;
     private String cover;//url
+    @ManyToOne
+    @JoinColumn(name = "author_id")
     private Author author;//relacja do rezysera - kolejny obiekt danych w uproszczeniu założenie że jeden film ma 1 reżysera
     private float rating;//rating
+    @ManyToMany
+    @JoinTable(
+            name = "branch_books",
+            joinColumns = @JoinColumn(name = "books_id", referencedColumnName = "id"),
+            inverseJoinColumns = @JoinColumn(name = "branch_id", referencedColumnName = "id")
+    )
     private List<Branch> branches = new ArrayList<>();
 //relacja wiele do wiele - bidirectional
 
