@@ -11,7 +11,6 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository
-@Primary
 public class JpaBranchDao implements BranchDao {
     @PersistenceContext
     private EntityManager entityManager;
