@@ -63,6 +63,8 @@ public class Book {
         return author;
     }
 
+    public int getAuthorId() {return author.getId();}
+
     public void setAuthor(Author author) {
         this.author = author;
     }

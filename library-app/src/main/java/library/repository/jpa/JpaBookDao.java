@@ -12,7 +12,6 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository
-@Primary
 public class JpaBookDao implements BookDao {
     @PersistenceContext
     private EntityManager entityManager;

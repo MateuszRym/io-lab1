@@ -7,24 +7,34 @@ import library.repository.BranchDao;
 import library.repository.AuthorDao;
 import library.repository.BookDao;
 import library.service.BookService;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Repository;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.PlatformTransactionManager;
+import org.springframework.transaction.TransactionStatus;
+import org.springframework.transaction.annotation.Propagation;
+import org.springframework.transaction.annotation.Transactional;
+import org.springframework.transaction.support.DefaultTransactionDefinition;
 
 import java.util.List;
 import java.util.logging.Logger;
 @Service
+//@RequiredArgsConstructor
 public class BookServiceBean implements BookService {
 
     private static final Logger log = Logger.getLogger(BookService.class.getName());
+    private final PlatformTransactionManager transactionManager;
 
     private AuthorDao authorDao;
     private BranchDao branchDao;
     private BookDao bookDao;
 
-    public BookServiceBean(AuthorDao authorDao, BranchDao branchDao, BookDao bookDao) {
+    public BookServiceBean(AuthorDao authorDao, BranchDao branchDao, BookDao bookDao, PlatformTransactionManager transactionManager) {
         this.authorDao = authorDao;
         this.branchDao = branchDao;
         this.bookDao = bookDao;
+        this.transactionManager = transactionManager;
     }
 
     public List<Book> getAllBooks() {
@@ -71,11 +81,22 @@ public class BookServiceBean implements BookService {
         log.info("searching author by id " + id);
         return authorDao.findById(id);
     }
-
+    @Transactional(propagation = Propagation.REQUIRED)
     @Override
     public Book addBook(Book b) {
         log.info("about to add book " + b);
-        return bookDao.add(b);
+        TransactionStatus ts = transactionManager.getTransaction(new DefaultTransactionDefinition());
+        try{
+            b = bookDao.add(b);
+            if(b.getTitle().equals("test")){
+                throw new RuntimeException("test exception");
+            }
+            transactionManager.commit(ts);
+        }catch (RuntimeException e){
+            transactionManager.rollback(ts);
+            throw e;
+        }
+        return b;
     }
 
     @Override

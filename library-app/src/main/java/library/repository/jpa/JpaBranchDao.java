@@ -16,7 +16,7 @@ public class JpaBranchDao implements BranchDao {
     private EntityManager entityManager;
     @Override
     public List<Branch> findAll() {
-        return entityManager.createQuery("select b from Branch b", Branch.class).getResultList();
+        return entityManager.createQuery("select b from Branch b").getResultList();
     }
 
     @Override
