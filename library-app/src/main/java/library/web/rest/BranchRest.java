@@ -7,9 +7,12 @@ import library.service.BookService;
 import library.service.BranchService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.boot.autoconfigure.neo4j.Neo4jProperties;
 import org.springframework.context.MessageSource;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.validation.Errors;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.WebDataBinder;
@@ -85,6 +88,10 @@ public class BranchRest {
                     .reduce("errors:\n", (accu, e) -> accu + e + "\n");
             return ResponseEntity.badRequest().body(errorMsg);
         }
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        log.info("user: {}", authentication.getName());
+        log.info("user roles: {}", authentication.getAuthorities());
+        log.info("authentication: {}", authentication);
 
         branch = branchService.addBranch(branch);
         log.info("added branch {}", branch);

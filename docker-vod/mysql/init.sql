@@ -94,3 +94,27 @@ INSERT INTO branch_books (books_id, branch_id) VALUES
 (8, 4),
 (9, 5),
 (10, 6);
+
+CREATE TABLE user
+(
+        id int primary key auto_increment,
+    username VARCHAR(255),
+    password VARCHAR(255)
+);
+
+CREATE TABLE role
+(
+    id int primary key auto_increment,
+    username VARCHAR(255),
+    role VARCHAR(255)
+);
+
+INSERT INTO user (username, password) VALUES
+('dbuser1', 'dbuser1'),
+('dbuser2', 'dbuser2'),
+('dbuser3', 'dbuser3');
+
+INSERT INTO role (username, role) VALUES
+('dbuser1', 'ROLE_USER'),
+('dbuser2', 'ROLE_AUTHOR_ADMIN'),
+('dbuser3', 'ROLE_BOOK_ADMIN');

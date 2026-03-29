@@ -8,6 +8,7 @@ import library.repository.BookDao;
 import library.service.BranchService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
@@ -58,7 +59,7 @@ public class BranchServiceBean implements BranchService {
         log.info("searching branches by book " + b.getId());
         return branchDao.findByBook(b);
     }
-
+    @PreAuthorize("hasRole('ADMIN')")
     @Override
     public Branch addBranch(Branch b) {
         log.info("adding branch " + b);

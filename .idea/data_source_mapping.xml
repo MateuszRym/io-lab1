@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DataSourcePerFileMappings">
+    <file url="file://$PROJECT_DIR$/docker-vod/mysql/init.sql" value="c0ffade8-7d34-43f8-a662-548eb9a5a1ad" />
+  </component>
+</project>
